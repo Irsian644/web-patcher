@@ -4,7 +4,7 @@
 // Everything (canonicals, sitemap, robots, JSON-LD) derives from it.
 // ─────────────────────────────────────────────────────────────
 
-export const SITE_URL = "https://thewebpatcher.com"; // ← change when domain is set
+export const SITE_URL = "https://web-patcher.vercel.app"; // ← change when a custom domain is connected
 
 export const BUSINESS = {
   name: "TheWebPatcher",
