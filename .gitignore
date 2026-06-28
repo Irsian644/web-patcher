@@ -1,0 +1,38 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Raw / private source screenshots — contain client chats & a real name.
+# (Optimized, non-private WebP versions live in public/work/.)
+webs/
+Screenshot*.png
+WhatsApp Image*.jpeg
+*.whatsapp.*
+
+# Secrets & credentials — never commit (belt-and-suspenders; this site
+# has no server secrets today, but block them by pattern anyway).
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+id_rsa*
+*.keystore
+secrets.json
+credentials.json
+serviceAccount*.json
+.vercel
+

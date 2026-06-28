@@ -1,0 +1,17 @@
+{
+  "name": "TheWebPatcher — Premium Web Design Albania",
+  "short_name": "TheWebPatcher",
+  "description": "Premium web design & website development for businesses in Albania and Europe.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
