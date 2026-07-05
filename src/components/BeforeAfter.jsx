@@ -1,4 +1,5 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { animate, useInView, useReducedMotion } from "framer-motion";
 
 /** The dull "before": an Instagram-only phone with nowhere to convert. */
 function InstagramBefore() {
@@ -33,6 +34,25 @@ export default function BeforeAfter({ src, alt, domain }) {
   const [pos, setPos] = useState(52); // %
   const wrapRef = useRef(null);
   const dragging = useRef(false);
+  const interacted = useRef(false);
+  const reduce = useReducedMotion();
+  const inView = useInView(wrapRef, { once: true, margin: "-20% 0px" });
+
+  // Affordance hint: the first time the slider scrolls into view, the handle
+  // glides left and settles back — visitors instantly see it's draggable.
+  // Cancelled the moment they touch it; skipped under reduced motion.
+  useEffect(() => {
+    if (!inView || reduce || interacted.current) return;
+    const controls = animate(52, [52, 38, 58, 52], {
+      duration: 2.2,
+      delay: 0.5,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (v) => {
+        if (!interacted.current) setPos(v);
+      },
+    });
+    return () => controls.stop();
+  }, [inView, reduce]);
 
   const setFromClientX = useCallback((clientX) => {
     const el = wrapRef.current;
@@ -43,6 +63,7 @@ export default function BeforeAfter({ src, alt, domain }) {
   }, []);
 
   const onPointerDown = (e) => {
+    interacted.current = true;
     dragging.current = true;
     e.currentTarget.setPointerCapture?.(e.pointerId);
     setFromClientX(e.clientX);
@@ -54,6 +75,8 @@ export default function BeforeAfter({ src, alt, domain }) {
   const onPointerUp = () => (dragging.current = false);
 
   const onKey = (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    interacted.current = true;
     if (e.key === "ArrowLeft") setPos((p) => Math.max(4, p - 4));
     if (e.key === "ArrowRight") setPos((p) => Math.min(96, p + 4));
   };

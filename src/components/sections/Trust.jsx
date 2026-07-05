@@ -60,7 +60,10 @@ export default function Trust() {
 
           {/* real proof — a stat row, not cards, not invented percentages */}
           <div className="mt-6 lg:col-span-12">
-            <motion.div variants={riseSoft} className="rule mb-12" />
+            <motion.div
+              variants={riseSoft}
+              className="rule-glow mb-12 opacity-60"
+            />
             <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
               {STATS.map((s) => (
                 <Stat key={s.label} value={s.value} label={s.label} />

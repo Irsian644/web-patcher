@@ -39,9 +39,15 @@ function ProjectRow({ project, index }) {
             href={project.url}
             target="_blank"
             rel="noreferrer"
-            className="group block overflow-hidden rounded-[16px]"
+            className="group relative block rounded-[16px]"
             aria-label={`${project.title} — open live site`}
           >
+            {/* hover: ambient light wakes up beneath the frame */}
+            <span
+              aria-hidden
+              className="absolute -inset-x-4 bottom-0 top-1/2 -z-10 rounded-[50%] opacity-0 blur-2xl transition-opacity duration-700 ease-out-expo group-hover:opacity-100"
+              style={{ background: "oklch(0.62 0.21 258 / 0.16)" }}
+            />
             <div className="overflow-hidden rounded-[14px]">
               <div className="transition-transform duration-[900ms] ease-out-expo group-hover:scale-[1.04]">
                 <ScreenFrame
@@ -51,6 +57,12 @@ function ProjectRow({ project, index }) {
                 />
               </div>
             </div>
+            {/* corner hint: visit arrow slides in */}
+            <span className="pointer-events-none absolute right-4 top-14 flex h-9 w-9 translate-y-2 items-center justify-center rounded-full bg-bg/70 opacity-0 backdrop-blur-sm transition-all duration-500 ease-out-expo group-hover:translate-y-0 group-hover:opacity-100">
+              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-ink" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
           </a>
         )}
       </motion.div>
@@ -98,7 +110,7 @@ function ProjectRow({ project, index }) {
 
 export default function Work({ showIntro = true }) {
   return (
-    <section id="work" className="relative py-[clamp(5rem,12vw,9rem)]">
+    <section id="work" className="panel relative py-[clamp(5rem,12vw,9rem)]">
       <div className="wrap">
         {/* Section intro (suppressed when a page provides its own H1) */}
         {showIntro && (

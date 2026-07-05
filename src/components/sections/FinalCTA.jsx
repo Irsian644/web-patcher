@@ -19,6 +19,10 @@ function Line({ children, dim }) {
 export default function FinalCTA() {
   return (
     <section className="relative overflow-hidden py-[clamp(7rem,16vw,13rem)]">
+      {/* light along the threshold into the closing act */}
+      <div aria-hidden className="absolute inset-x-0 top-0">
+        <div className="rule-glow mx-auto max-w-5xl opacity-40" />
+      </div>
       {/* one surgical blue glow, bottom-center */}
       <div
         aria-hidden
@@ -42,11 +46,15 @@ export default function FinalCTA() {
 
           <motion.div
             variants={riseSoft}
-            className="mt-12 flex flex-col items-start gap-6 sm:flex-row sm:items-center"
+            className="mt-12 flex flex-col items-start gap-7 sm:mt-14 sm:flex-row sm:items-center sm:gap-8"
           >
-            <CTA href={BRAND.dmUrl}>Get your free website idea</CTA>
-            <span className="text-sm text-ink-faint">
-              Free concept · No commitment · Reply within 24h
+            <CTA href={BRAND.dmUrl} size="mega">
+              Get your free website idea
+            </CTA>
+            <span className="text-sm leading-relaxed text-ink-faint">
+              Free concept · No commitment
+              <br className="hidden sm:block" />
+              <span className="text-ink-dim"> Reply within 24h</span>
             </span>
           </motion.div>
         </motion.div>

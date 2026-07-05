@@ -15,15 +15,27 @@ function PlanRow({ plan }) {
   return (
     <motion.div
       variants={rise}
-      className="group relative grid grid-cols-1 gap-4 border-t border-line py-8 transition-colors duration-500 hover:border-line-strong sm:grid-cols-[1.4fr_1fr_1fr_auto] sm:items-center sm:gap-8"
+      className={`group relative grid grid-cols-1 gap-4 border-t py-8 transition-colors duration-500 sm:grid-cols-[1.4fr_1fr_1fr_auto] sm:items-center sm:gap-8 ${
+        plan.featured ? "border-blue/25" : "border-line hover:border-line-strong"
+      }`}
     >
+      {/* hover: the row itself lights up (full-bleed tint, no layout shift) */}
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute -inset-x-5 inset-y-0 -z-10 rounded-2xl transition-opacity duration-500 ${
+          plan.featured
+            ? "bg-gradient-to-r from-blue/[0.06] via-transparent to-transparent opacity-100"
+            : "bg-white/[0.025] opacity-0 group-hover:opacity-100"
+        }`}
+      />
+
       {/* name + best-for */}
       <div className="flex items-baseline gap-3">
         <h3 className="font-display text-2xl font-semibold text-ink sm:text-[1.75rem]">
           {plan.name}
         </h3>
         {plan.featured && (
-          <span className="rounded-full border border-blue/40 px-2.5 py-0.5 font-mono text-[0.62rem] uppercase tracking-wider text-blue-soft">
+          <span className="rounded-full border border-blue/40 bg-blue/10 px-2.5 py-0.5 font-mono text-[0.62rem] uppercase tracking-wider text-blue-soft">
             Most chosen
           </span>
         )}
@@ -32,7 +44,7 @@ function PlanRow({ plan }) {
       <p className="text-[0.95rem] text-ink-dim sm:max-w-[14rem]">{plan.for}</p>
 
       <div className="flex items-center gap-6 sm:flex-col sm:items-start sm:gap-1">
-        <span className="font-display text-xl font-semibold text-ink tabular-nums">
+        <span className="font-display text-xl font-semibold text-ink tabular-nums transition-colors duration-300 group-hover:text-blue-soft">
           {plan.price}
         </span>
         <span className="font-mono text-xs text-ink-faint">

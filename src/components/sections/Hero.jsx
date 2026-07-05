@@ -48,7 +48,8 @@ export default function Hero() {
       ref={ref}
       className="relative min-h-dvh overflow-hidden pt-28 sm:pt-32"
     >
-      {/* one surgical blue wash, top-left only — not ambient blobs */}
+      {/* Cinematic staging: one surgical wash + a faint structural grid that
+          dissolves downward. Deliberate light, not ambient blob soup. */}
       <div
         aria-hidden
         className="pointer-events-none absolute -left-40 -top-40 h-[42rem] w-[42rem] rounded-full opacity-[0.5]"
@@ -57,6 +58,26 @@ export default function Hero() {
             "radial-gradient(closest-side, rgba(37,99,235,0.16), transparent)",
         }}
       />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, oklch(1 0 0 / 0.035) 1px, transparent 1px), linear-gradient(to bottom, oklch(1 0 0 / 0.035) 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
+          maskImage:
+            "radial-gradient(110% 65% at 50% 0%, black 30%, transparent 72%)",
+          WebkitMaskImage:
+            "radial-gradient(110% 65% at 50% 0%, black 30%, transparent 72%)",
+        }}
+      />
+      {/* horizon light where the hero hands off to the page */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0"
+      >
+        <div className="rule-glow mx-auto max-w-4xl opacity-50" />
+      </div>
 
       <div className="wrap grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         {/* LEFT — type */}
@@ -74,7 +95,7 @@ export default function Hero() {
             <span className="label">{BRAND.tagline}</span>
           </motion.div>
 
-          <h1 className="display text-[clamp(2.6rem,7vw,5.4rem)] font-semibold text-ink">
+          <h1 className="display text-[clamp(2.7rem,7.2vw,5.75rem)] font-semibold text-ink">
             {HEADLINE.map((parts, i) => (
               <Line key={i} parts={parts} />
             ))}
@@ -120,6 +141,7 @@ export default function Hero() {
               alt={front.alt}
               domain={front.domain}
               eager
+              glow
             />
           </motion.div>
 

@@ -54,12 +54,17 @@ export default function Testimonials() {
             <motion.figure
               key={t.business}
               variants={rise}
-              className={i === 1 ? "lg:mt-24" : ""}
+              className={`relative pl-2 ${i === 1 ? "lg:mt-24" : ""}`}
             >
-              <blockquote className="font-display text-[clamp(1.6rem,3.4vw,2.5rem)] font-medium leading-[1.18] tracking-tight text-ink">
-                <span className="text-blue-soft">“</span>
+              {/* oversized hanging quote — editorial, not inline punctuation */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -left-3 -top-10 select-none font-display text-[7rem] font-semibold leading-none text-blue/25 sm:-left-6 sm:text-[9rem]"
+              >
+                “
+              </span>
+              <blockquote className="relative font-display text-[clamp(1.6rem,3.4vw,2.5rem)] font-medium leading-[1.18] tracking-tight text-ink">
                 {t.quote}
-                <span className="text-blue-soft">”</span>
               </blockquote>
 
               <p className="mt-5 text-[0.95rem] italic text-ink-faint">

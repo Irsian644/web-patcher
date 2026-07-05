@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Logo } from "./Logo";
 import CTA from "./CTA";
@@ -39,13 +39,29 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-9 md:flex">
             {NAV.map((l) => (
-              <Link
+              <NavLink
                 key={l.to}
                 to={l.to}
-                className="text-[0.92rem] text-ink-dim transition-colors duration-300 hover:text-ink"
+                className={({ isActive }) =>
+                  `group relative text-[0.92rem] transition-colors duration-300 ${
+                    isActive ? "text-ink" : "text-ink-dim hover:text-ink"
+                  }`
+                }
               >
-                {l.label}
-              </Link>
+                {({ isActive }) => (
+                  <>
+                    {l.label}
+                    {/* current-page marker / hover underline */}
+                    <span
+                      className={`absolute -bottom-1.5 left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-blue-soft transition-all duration-300 ease-out-expo ${
+                        isActive
+                          ? "opacity-100"
+                          : "opacity-0 group-hover:opacity-60"
+                      }`}
+                    />
+                  </>
+                )}
+              </NavLink>
             ))}
           </div>
 
