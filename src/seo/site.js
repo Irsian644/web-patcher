@@ -10,7 +10,14 @@ export const BUSINESS = {
   name: "TheWebPatcher",
   legalName: "TheWebPatcher",
   description:
-    "TheWebPatcher builds premium, fast, conversion-focused websites for businesses in Albania and across Europe — web design, website development, and e-commerce that turn visitors into customers.",
+    "TheWebPatcher designs fast, professional websites for small and medium businesses in Albania and across Europe — web design, website development, and online stores that make a business easier to find, understand, and contact.",
+  // Founder — the site is run by one person; clients work with them directly.
+  // Add a real portrait path / longer bio here later (see /about).
+  founder: {
+    name: "Irsian Hashorva",
+    role: "Designer & developer",
+    // portrait: "/team/irsian.webp", // TODO: add a real photo when available
+  },
   // No public email — contact is Instagram-only (avoids spam harvesting of a
   // personal address). Add a dedicated business email here if you want one.
   instagram: "https://instagram.com/thewebpatcher",
@@ -24,7 +31,7 @@ export const BUSINESS = {
   geo: { lat: 41.3275, lng: 19.8187 }, // Tirana
   priceRange: "€€",
   foundingYear: "2024",
-  slogan: "Premium websites that turn visitors into customers.",
+  slogan: "Professional websites for businesses that have outgrown Instagram.",
   // sameAs = entity-confirmation links. Instagram only for now; add a Google
   // Business Profile / LinkedIn URL here later for a stronger entity graph.
   sameAs: ["https://instagram.com/thewebpatcher"],
@@ -42,11 +49,13 @@ export const abs = (path = "/") =>
 export const ROUTES = {
   home: {
     path: "/",
+    // Brand + broad service intent. The exact "web design albania" term is
+    // owned by /web-design-albania to avoid the two pages competing.
     title:
-      "Web Design Albania — Premium Websites from €150 | TheWebPatcher",
+      "TheWebPatcher — Professional Websites for Small Businesses",
     description:
-      "Premium web design & development in Albania. Fast, modern, SEO-friendly websites from €150, live in days. Turn visitors into customers — get a free idea today.",
-    keyword: "web design albania",
+      "TheWebPatcher designs fast, professional websites for small and medium businesses in Albania and Europe. Clear service, honest pricing from €150 — get a free concept.",
+    keyword: "professional website design for small business",
     breadcrumb: "Home",
     ogImage: "/og/og-home.png",
     priority: "1.0",
@@ -55,7 +64,7 @@ export const ROUTES = {
     path: "/services",
     title: "Website Development Services & Pricing in Albania | TheWebPatcher",
     description:
-      "Website development services in Albania from €150. Starter sites to full e-commerce — transparent pricing, live in days, built to convert. See plans & start free.",
+      "Website development services in Albania from €150. Starter sites to full e-commerce — transparent pricing, realistic timelines, clear scope. See plans & start free.",
     keyword: "website development services",
     breadcrumb: "Services",
     ogImage: "/og/og-services.png",
@@ -96,7 +105,7 @@ export const ROUTES = {
     path: "/web-design-albania",
     title: "Web Design Albania — Modern Websites from €150 | TheWebPatcher",
     description:
-      "Professional web design in Albania. Fast, mobile-first websites from €150, live in days, that make your business look trusted and rank on Google. Get a free idea.",
+      "Professional web design in Albania. Fast, mobile-first websites from €150, live in days, that help your business look trusted and get found online. Get a free idea.",
     keyword: "web design albania",
     breadcrumb: "Web Design Albania",
     ogImage: "/og/og-web-design-albania.png",
@@ -106,7 +115,7 @@ export const ROUTES = {
     path: "/ecommerce-development",
     title: "E-Commerce Website Development in Albania from €800 | TheWebPatcher",
     description:
-      "Sell online with a premium e-commerce website in Albania from €800. Fast, secure stores with checkout & payments, built to convert. Start selling — get a free plan.",
+      "Sell online with an e-commerce website in Albania from €800. Fast, secure stores with a product catalogue and checkout. Start selling — get a free plan.",
     keyword: "ecommerce website albania",
     breadcrumb: "E-Commerce Development",
     ogImage: "/og/og-ecommerce-development.png",

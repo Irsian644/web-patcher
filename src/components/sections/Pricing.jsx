@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import CTA from "../CTA";
 import { rise, riseSoft, stagger, inView } from "../../lib/motion";
-import { PLANS, BRAND } from "../../data/content";
+import { PLANS, dmLink } from "../../data/content";
 
 // Keyword-rich internal links (topical hub → spoke). Shown on the homepage.
 const RELATED = [
@@ -41,20 +41,29 @@ function PlanRow({ plan }) {
         )}
       </div>
 
-      <p className="text-[0.95rem] text-ink-dim sm:max-w-[14rem]">{plan.for}</p>
+      <div className="sm:max-w-[15rem]">
+        <p className="text-[0.95rem] text-ink-dim">{plan.for}</p>
+        <p className="mt-1.5 text-[0.85rem] leading-relaxed text-ink-faint">
+          {plan.pages} · {plan.scope}
+        </p>
+      </div>
 
       <div className="flex items-center gap-6 sm:flex-col sm:items-start sm:gap-1">
         <span className="font-display text-xl font-semibold text-ink tabular-nums transition-colors duration-300 group-hover:text-blue-soft">
           {plan.price}
         </span>
         <span className="font-mono text-xs text-ink-faint">
-          {plan.timeline} · care {plan.care}
+          {plan.timeline} · optional care {plan.care}
         </span>
       </div>
 
       <div className="sm:justify-self-end">
-        <CTA href={BRAND.dmUrl} variant="bare" className="text-ink-dim group-hover:text-ink">
-          Start
+        <CTA
+          href={dmLink(plan.intent)}
+          variant="bare"
+          className="text-ink-dim group-hover:text-ink"
+        >
+          {plan.cta}
         </CTA>
       </div>
     </motion.div>
@@ -81,8 +90,8 @@ export default function Pricing({ showRelated = false }) {
             </motion.span>
           </h2>
           <motion.p variants={riseSoft} className="max-w-xs text-ink-dim">
-            Every site is fast, mobile-first, and built to win customers. Not sure
-            which? We'll tell you — free.
+            Every site is fast, mobile-first, and easy for customers to use. Not
+            sure which fits? We'll help you choose — free.
           </motion.p>
         </motion.div>
 

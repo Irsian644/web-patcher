@@ -36,7 +36,7 @@ export default function Footer() {
             </Link>
             <p className="mt-5 text-[0.95rem] leading-relaxed text-ink-dim">
               Premium web design &amp; website development for businesses in
-              Albania and across Europe. Fast, modern, built to convert.
+              Albania and across Europe. Fast, modern, and easy to use.
             </p>
           </div>
 

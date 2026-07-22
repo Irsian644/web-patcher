@@ -5,8 +5,17 @@ export const BRAND = {
   handle: "@thewebpatcher",
   instagramUrl: "https://instagram.com/thewebpatcher",
   dmUrl: "https://ig.me/m/thewebpatcher",
-  tagline: "Fast · Premium · Conversion-focused",
+  tagline: "Fast · Professional · Business-focused",
 };
+
+// Instagram DM link. Instagram doesn't reliably prefill text, so the intent is
+// appended as a query hint the visitor can copy; the base link still opens the
+// chat. Keeps context without depending on unsupported prefill behaviour.
+export function dmLink(intent) {
+  return intent
+    ? `${BRAND.dmUrl}?ref=${encodeURIComponent(intent)}`
+    : BRAND.dmUrl;
+}
 
 // Portfolio — real live sites first. `image` is a real screenshot (WebP).
 export const PROJECTS = [
@@ -15,7 +24,7 @@ export const PROJECTS = [
     sector: "Beauty / Studio",
     year: "2025",
     blurb:
-      "An elegant, booking-ready presence for a premium nail studio. Calm, confident, conversion-first.",
+      "A calm, booking-ready site for a nail studio — services, gallery, and a clear way to get in touch, all in one place.",
     url: "https://duo-nails.netlify.app/",
     domain: "duo-nails.netlify.app",
     image: "/work/duo-nails.webp",
@@ -29,7 +38,7 @@ export const PROJECTS = [
     sector: "Fashion / E-commerce",
     year: "2025",
     blurb:
-      "A storefront that sells. Bold, fast, and built to turn browsers into buyers.",
+      "A bold, fast online store for a fashion brand — product browsing and a clear ordering path, moved off the Instagram feed.",
     url: "https://dhurata-luve.netlify.app/",
     domain: "dhurata-luve.netlify.app",
     image: "/work/dhurata-luve.webp",
@@ -43,7 +52,7 @@ export const PROJECTS = [
     sector: "Local Business",
     year: "2024",
     blurb:
-      "A trustworthy, established presence for a business that's been around since 1988 — and looks it.",
+      "A professional online home for a business established in 1988 — its history, its work, and how to reach it, presented clearly.",
     url: "https://t-herzberger.com/",
     domain: "t-herzberger.com",
     image: "/work/herzberger.webp",
@@ -84,7 +93,7 @@ export const PROCESS = [
   {
     n: "03",
     title: "The build",
-    desc: "Fast, clean, responsive, and engineered for speed and conversions. Built in days, not months.",
+    desc: "Fast, clean, responsive, and built for speed and clarity — usually ready in days, not months.",
   },
   {
     n: "04",
@@ -94,20 +103,34 @@ export const PROCESS = [
 ];
 
 // Pricing — kept as a tight, non-cookie-cutter band, not a 3-up card table.
+// `cta` is a package-specific label; `intent` prefills the Instagram message.
+// `scope`/`pages` describe what's included in plain language.
 export const PLANS = [
   {
     name: "Starter",
     price: "€150–200",
     care: "€20/mo",
     timeline: "3–5 days",
-    for: "Getting online, properly, for the first time.",
+    for: "A first professional website for your business.",
+    pages: "1–3 pages",
+    scope:
+      "A clean one-page or small site with your services, photos, hours, and a clear way to contact you.",
+    cta: "Choose Starter",
+    intent:
+      "Hi, I'm interested in the Starter website package for my business.",
   },
   {
     name: "Business Pro",
     price: "€400–500",
     care: "€40/mo",
     timeline: "1–2 weeks",
-    for: "Converting visitors into booked, paying customers.",
+    for: "A fuller site for an established, growing business.",
+    pages: "Multi-page",
+    scope:
+      "Several pages — services, gallery, about, contact — with a considered layout and room to grow.",
+    cta: "Choose Business Pro",
+    intent:
+      "Hi, I'm interested in the Business Pro website package for my business.",
     featured: true,
   },
   {
@@ -115,9 +138,27 @@ export const PLANS = [
     price: "€800–1000",
     care: "€60/mo",
     timeline: "2–4 weeks",
-    for: "Selling products online, end to end.",
+    for: "An online store to sell products directly.",
+    pages: "Store + pages",
+    scope:
+      "A product catalogue and a checkout so customers can order online, plus the core pages around it.",
+    cta: "Discuss E-Commerce",
+    intent:
+      "Hi, I'd like to discuss an E-Commerce website for my business.",
   },
 ];
+
+// Optional monthly care — what it may cover. Only confirmed items are listed;
+// add/remove here as the offering is finalised.
+export const CARE_INCLUDES = [
+  "Technical updates & security patches",
+  "Small content or image changes",
+  "Uptime monitoring",
+  "Priority support over Instagram",
+];
+// Stated clearly so nothing is implied to be included when it isn't.
+export const CARE_EXCLUDES =
+  "Domain, hosting, and any third-party subscriptions are billed separately. Large redesigns or new features are quoted on request. Care plans are optional — you're never locked in.";
 
 export const FAQS = [
   {

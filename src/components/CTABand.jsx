@@ -6,7 +6,7 @@ import { BRAND } from "../data/content";
 
 /** Reusable conversion + internal-link band for inner pages. */
 export default function CTABand({
-  title = "Ready for a website that wins customers?",
+  title = "Ready for a website that works as hard as you do?",
   text = "Tell us about your business and get a free concept — no cost, no commitment.",
   links = [],
 }) {

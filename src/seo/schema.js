@@ -4,6 +4,22 @@ import { SITE_URL, BUSINESS, abs } from "./site";
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const LOCALBUSINESS_ID = `${SITE_URL}/#localbusiness`;
+const FOUNDER_ID = `${SITE_URL}/#founder`;
+
+// Person node for the founder — real, verifiable identity (E-E-A-T).
+export function personSchema() {
+  return {
+    "@type": "Person",
+    "@id": FOUNDER_ID,
+    name: BUSINESS.founder.name,
+    jobTitle: BUSINESS.founder.role,
+    worksFor: { "@id": ORG_ID },
+    url: abs("/about"),
+    ...(BUSINESS.founder.portrait
+      ? { image: abs(BUSINESS.founder.portrait) }
+      : {}),
+  };
+}
 
 export function organizationSchema() {
   return {
@@ -23,6 +39,7 @@ export function organizationSchema() {
     },
     image: { "@id": `${SITE_URL}/#logo` },
     foundingDate: BUSINESS.foundingYear,
+    founder: { "@id": FOUNDER_ID },
     sameAs: BUSINESS.sameAs,
     areaServed: BUSINESS.areaServed,
     knowsLanguage: BUSINESS.languages,

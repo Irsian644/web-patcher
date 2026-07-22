@@ -6,14 +6,14 @@ export default function WebDesignAlbania() {
     <LandingTemplate
       route={ROUTES.webDesignAlbania}
       kicker="Web design · Albania"
-      h1="Web design in Albania that wins customers."
-      intro="TheWebPatcher designs premium, fast, mobile-first websites for businesses across Albania — from Tirana to Durrës, Vlorë and Shkodër. Look trusted, rank on Google, and turn visitors into paying customers."
-      lead="In Albania, customers Google a business before they ever message it. If they find a slow, outdated site — or no website at all — they move on to a competitor. Professional web design fixes that first impression and makes your business the obvious choice."
+      h1="Web design in Albania, built around your business."
+      intro="TheWebPatcher designs fast, mobile-first websites for businesses across Albania — from Tirana to Durrës, Vlorë and Shkodër. The goal is simple: help people understand what you do, trust you, and know how to get in touch."
+      lead="In Albania, most people check a business online before they ever message it. A slow, outdated site — or no site at all — makes that first impression harder. A clear, professional website gives visitors the information they need and an obvious next step."
       serviceType="Web Design"
       points={[
-        { title: "Built for Albanian businesses", body: "We design for local fashion brands, beauty studios, cafés, gyms, and service businesses — with the trust signals and contact flows your customers expect." },
-        { title: "Fast & mobile-first", body: "Most of your visitors are on a phone. Every site is built to load instantly and look perfect on mobile, which also helps you rank higher on Google." },
-        { title: "SEO-friendly from day one", body: "Clean code, proper structure, and local SEO so your business can be found for searches like ‘web design Albania’ and ‘web developer near me’." },
+        { title: "Built for Albanian businesses", body: "We design for local fashion brands, beauty studios, cafés, gyms, and service businesses — with the information and contact options your customers look for first." },
+        { title: "Fast & mobile-first", body: "Most of your visitors are on a phone. Every site is built to load quickly and look right on mobile — which search engines also reward." },
+        { title: "Prepared for search", body: "Clean code and a proper structure, with local details in place, so your business is set up to be found for searches like ‘web design Albania’." },
         { title: "Affordable & transparent", body: "Premium design without agency overhead. Starter websites from €150, with clear pricing and no surprises." },
       ]}
       faqs={[

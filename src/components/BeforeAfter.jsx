@@ -137,10 +137,11 @@ export default function BeforeAfter({ src, alt, domain }) {
           <div className="absolute inset-y-0 w-px bg-white/80" />
           <button
             type="button"
-            aria-label="Drag to compare Instagram-only versus a real website"
+            aria-label="Compare the Instagram-only view with the real website. Use arrow keys to reveal more of each."
             aria-valuenow={Math.round(pos)}
             aria-valuemin={0}
             aria-valuemax={100}
+            aria-valuetext={`${Math.round(pos)}% real website shown`}
             role="slider"
             tabIndex={0}
             onKeyDown={onKey}

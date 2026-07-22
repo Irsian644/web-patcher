@@ -27,7 +27,7 @@ export default function Portfolio() {
       <PageHeader
         kicker="Selected work"
         title="Real websites, real businesses."
-        intro="A look at websites TheWebPatcher has designed and developed for fashion, beauty, and local service businesses — fast, premium, and built to convert. Drag the slider on the first project to see the difference a real website makes."
+        intro="A look at websites TheWebPatcher has designed and developed for fashion, beauty, and local service businesses — fast, professional, and clear. Drag the slider on the first project to see the difference a real website makes."
       />
       <Work showIntro={false} />
       <Testimonials />

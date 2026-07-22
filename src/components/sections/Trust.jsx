@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { rise, riseSoft, stagger, inView } from "../../lib/motion";
 
-/* Real, verifiable proof points — no invented percentages. */
+/* Real, verifiable proof points — no invented percentages or ambiguous dates. */
 const STATS = [
-  { value: "3", label: "Live business sites" },
-  { value: "Days", label: "Not months, to launch" },
-  { value: "1988", label: "Trusted by a client since" },
-  { value: "100%", label: "Built to convert" },
+  { value: "3", label: "Live client websites" },
+  { value: "Days", label: "Typical launch, not months" },
+  { value: "Est. 1988", label: "A client business, brought online" },
+  { value: "1:1", label: "You work directly with the builder" },
 ];
 
 function Stat({ value, label }) {
@@ -53,8 +53,8 @@ export default function Trust() {
           >
             <p className="text-[1.05rem] leading-relaxed text-ink-dim">
               They Google you. They want prices, hours, and proof you're real —
-              in seconds. No website, and you look like a hobby. The right one,
-              and you look like the only choice.
+              in seconds. Without a website, that's hard to show. With the right
+              one, you look established and easy to trust.
             </p>
           </motion.div>
 
