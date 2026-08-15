@@ -24,7 +24,7 @@ export default function CTABand({
         viewport={inView}
         className="wrap relative"
       >
-        <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3.25rem)] font-semibold text-ink">
+        <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3.25rem)] font-light text-ink">
           {title}
         </h2>
         <p className="mt-5 max-w-xl text-[1.05rem] text-ink-dim">{text}</p>

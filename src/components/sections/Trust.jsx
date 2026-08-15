@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { rise, riseSoft, stagger, inView } from "../../lib/motion";
+import SectionHead from "../ui/SectionHead";
+import { riseSoft, stagger, inView } from "../../lib/motion";
 
 /* Real, verifiable proof points — no invented percentages or ambiguous dates. */
 const STATS = [
@@ -9,68 +10,54 @@ const STATS = [
   { value: "1:1", label: "You work directly with the builder" },
 ];
 
-function Stat({ value, label }) {
-  return (
-    <motion.div variants={riseSoft} className="flex flex-col gap-1.5">
-      <span className="font-display text-[clamp(2rem,4vw,3rem)] font-semibold leading-none text-ink tabular-nums">
-        {value}
-      </span>
-      <span className="text-sm text-ink-dim">{label}</span>
-    </motion.div>
-  );
-}
-
 export default function Trust() {
   return (
-    <section className="relative py-[clamp(6rem,14vw,11rem)]">
+    <section className="relative py-[clamp(5rem,12vw,9rem)]">
       <div className="wrap">
-        <motion.div
-          variants={stagger(0, 0.06)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={inView}
-          className="grid gap-y-12 lg:grid-cols-12 lg:gap-x-16"
-        >
-          {/* big statement */}
-          <div className="lg:col-span-7 lg:col-start-1">
-            <motion.p variants={riseSoft} className="label mb-7">
-              The part nobody tells you
-            </motion.p>
-            <h2 className="display text-[clamp(2rem,5.5vw,4rem)] font-semibold text-ink">
-              <motion.span variants={rise} className="block">
-                People judge your business
-              </motion.span>
-              <motion.span variants={rise} className="block text-ink-dim">
-                before they ever message you.
-              </motion.span>
-            </h2>
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <SectionHead
+              eyebrow="Why it matters"
+              title="People judge your business before they ever message you."
+            />
           </div>
 
-          {/* supporting line, offset */}
           <motion.div
             variants={riseSoft}
-            className="self-end lg:col-span-4 lg:col-start-9"
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            className="self-end lg:col-span-5"
           >
-            <p className="text-[1.05rem] leading-relaxed text-ink-dim">
+            <p className="text-[1.0625rem] leading-relaxed text-ink-dim">
               They Google you. They want prices, hours, and proof you're real —
               in seconds. Without a website, that's hard to show. With the right
               one, you look established and easy to trust.
             </p>
           </motion.div>
+        </div>
 
-          {/* real proof — a stat row, not cards, not invented percentages */}
-          <div className="mt-6 lg:col-span-12">
-            <motion.div
-              variants={riseSoft}
-              className="rule-glow mb-12 opacity-60"
-            />
-            <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
-              {STATS.map((s) => (
-                <Stat key={s.label} value={s.value} label={s.label} />
-              ))}
-            </div>
-          </div>
-        </motion.div>
+        <motion.dl
+          variants={stagger(0, 0.07)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+          className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4"
+        >
+          {STATS.map((s) => (
+            <motion.div key={s.label} variants={riseSoft} className="card p-6 sm:p-7">
+              <dt className="sr-only">{s.label}</dt>
+              <dd>
+                <span className="block font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-light leading-none text-ink tabular-nums">
+                  {s.value}
+                </span>
+                <span className="mt-3 block text-[0.875rem] leading-relaxed text-ink-dim">
+                  {s.label}
+                </span>
+              </dd>
+            </motion.div>
+          ))}
+        </motion.dl>
       </div>
     </section>
   );

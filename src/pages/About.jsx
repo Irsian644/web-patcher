@@ -77,7 +77,7 @@ export default function About() {
             </p>
 
             <div className="mt-10">
-              <h2 className="font-display text-lg font-semibold text-ink">
+              <h2 className="font-display text-lg font-medium text-ink">
                 What to expect
               </h2>
               <ul className="mt-5 flex flex-col gap-3">
@@ -93,9 +93,9 @@ export default function About() {
 
           {/* Founder card — works with or without a real portrait */}
           <div className="lg:col-span-4 lg:col-start-9">
-            <div className="rounded-2xl border border-line bg-white/[0.02] p-6">
+            <div className="rounded-card border border-line bg-surface p-6">
               <div
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-blue/15 font-display text-xl font-semibold text-blue-soft"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-blue/15 font-display text-xl font-medium text-blue-soft"
                 aria-hidden
               >
                 {BUSINESS.founder.name
@@ -103,7 +103,7 @@ export default function About() {
                   .map((n) => n[0])
                   .join("")}
               </div>
-              <p className="mt-4 font-display text-lg font-semibold text-ink">
+              <p className="mt-4 font-display text-lg font-medium text-ink">
                 {BUSINESS.founder.name}
               </p>
               <p className="text-sm text-ink-dim">{BUSINESS.founder.role}</p>
@@ -131,10 +131,10 @@ export default function About() {
         </div>
 
         {/* Principles */}
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
+        <div className="mt-16 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-3">
           {PRINCIPLES.map((p) => (
-            <div key={p.title} className="bg-bg p-7 sm:p-8">
-              <h3 className="font-display text-lg font-semibold text-ink">{p.title}</h3>
+            <div key={p.title} className="bg-surface p-7 sm:p-8">
+              <h3 className="font-display text-lg font-medium text-ink">{p.title}</h3>
               <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-dim">{p.body}</p>
             </div>
           ))}

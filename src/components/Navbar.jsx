@@ -32,12 +32,13 @@ export default function Navbar() {
           scrolled ? "border-b border-line bg-bg/70 backdrop-blur-xl" : "border-b border-transparent"
         }`}
       >
-        <nav className="wrap flex h-16 items-center justify-between sm:h-[4.5rem]">
-          <Link to="/" aria-label="TheWebPatcher home" className="rounded">
+        <nav className="wrap flex h-16 items-center justify-between gap-8 sm:h-[4.5rem]">
+          <Link to="/" aria-label="TheWebPatcher home" className="inline-flex min-h-[44px] items-center rounded">
             <Logo />
           </Link>
 
-          <div className="hidden items-center gap-9 md:flex">
+          {/* Reference nav: links sit centred between logo and CTA. */}
+          <div className="hidden flex-1 items-center justify-center gap-9 md:flex">
             {NAV.map((l) => (
               <NavLink
                 key={l.to}
@@ -66,7 +67,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:block">
-            <CTA href={BRAND.dmUrl} variant="bare">
+            <CTA href={BRAND.dmUrl} className="!px-5 !py-2.5 !text-[0.9rem]">
               Free website idea
             </CTA>
           </div>
@@ -76,7 +77,7 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="relative h-10 w-10 md:hidden"
+            className="relative h-11 w-11 md:hidden"
           >
             <span
               className={`absolute left-2.5 top-1/2 h-px w-5 bg-ink transition-all duration-300 ${
@@ -112,7 +113,7 @@ export default function Navbar() {
                   <Link
                     to={l.to}
                     onClick={() => setOpen(false)}
-                    className="block border-b border-line py-5 font-display text-3xl font-semibold text-ink"
+                    className="block border-b border-line py-5 font-display text-3xl font-light text-ink"
                   >
                     {l.label}
                   </Link>

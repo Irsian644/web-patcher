@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import CTA from "../CTA";
+import SectionHead from "../ui/SectionHead";
 import { rise, riseSoft, stagger, inView } from "../../lib/motion";
 import { PLANS, dmLink } from "../../data/content";
 
@@ -11,58 +12,46 @@ const RELATED = [
   { label: "Business websites", to: "/business-websites" },
 ];
 
-function PlanRow({ plan }) {
+function PlanCard({ plan }) {
   return (
     <motion.div
       variants={rise}
-      className={`group relative grid grid-cols-1 gap-4 border-t py-8 transition-colors duration-500 sm:grid-cols-[1.4fr_1fr_1fr_auto] sm:items-center sm:gap-8 ${
-        plan.featured ? "border-blue/25" : "border-line hover:border-line-strong"
+      className={`card relative flex flex-col p-7 transition-colors duration-500 sm:p-9 ${
+        plan.featured ? "border-blue/35" : "hover:border-line-strong"
       }`}
     >
-      {/* hover: the row itself lights up (full-bleed tint, no layout shift) */}
-      <span
-        aria-hidden
-        className={`pointer-events-none absolute -inset-x-5 inset-y-0 -z-10 rounded-2xl transition-opacity duration-500 ${
-          plan.featured
-            ? "bg-gradient-to-r from-blue/[0.06] via-transparent to-transparent opacity-100"
-            : "bg-white/[0.025] opacity-0 group-hover:opacity-100"
-        }`}
-      />
-
-      {/* name + best-for */}
-      <div className="flex items-baseline gap-3">
-        <h3 className="font-display text-2xl font-semibold text-ink sm:text-[1.75rem]">
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="font-display text-[1.5rem] font-medium text-ink">
           {plan.name}
         </h3>
         {plan.featured && (
-          <span className="rounded-full border border-blue/40 bg-blue/10 px-2.5 py-0.5 font-mono text-[0.62rem] uppercase tracking-wider text-blue-soft">
+          <span className="rounded-full border border-blue/40 bg-blue/10 px-3 py-1 text-[0.6875rem] uppercase tracking-wider text-blue-soft">
             Most chosen
           </span>
         )}
       </div>
 
-      <div className="sm:max-w-[15rem]">
-        <p className="text-[0.95rem] text-ink-dim">{plan.for}</p>
-        <p className="mt-1.5 text-[0.85rem] leading-relaxed text-ink-faint">
-          {plan.pages} · {plan.scope}
-        </p>
-      </div>
+      <p className="mt-3 text-[0.9375rem] text-ink-dim">{plan.for}</p>
 
-      <div className="flex items-center gap-6 sm:flex-col sm:items-start sm:gap-1">
-        <span className="font-display text-xl font-semibold text-ink tabular-nums transition-colors duration-300 group-hover:text-blue-soft">
+      <div className="my-6 h-px w-full bg-line" />
+
+      <div className="flex items-baseline gap-2">
+        <span className="font-display text-[2rem] font-light text-ink tabular-nums">
           {plan.price}
         </span>
-        <span className="font-mono text-xs text-ink-faint">
-          {plan.timeline} · optional care {plan.care}
-        </span>
+        <span className="text-[0.875rem] text-ink-faint">{plan.pages}</span>
       </div>
 
-      <div className="sm:justify-self-end">
-        <CTA
-          href={dmLink(plan.intent)}
-          variant="bare"
-          className="text-ink-dim group-hover:text-ink"
-        >
+      <p className="mt-2 font-mono text-[0.8125rem] text-ink-faint">
+        {plan.timeline} · optional care {plan.care}
+      </p>
+
+      <p className="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-ink-dim">
+        {plan.scope}
+      </p>
+
+      <div className="mt-8">
+        <CTA href={dmLink(plan.intent)} className="w-full justify-center">
           {plan.cta}
         </CTA>
       </div>
@@ -74,41 +63,32 @@ export default function Pricing({ showRelated = false }) {
   return (
     <section id="pricing" className="relative py-[clamp(5rem,12vw,9rem)]">
       <div className="wrap">
-        <motion.div
-          variants={stagger(0, 0.07)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={inView}
-          className="mb-[clamp(2.5rem,6vw,4.5rem)] flex flex-col justify-between gap-6 sm:flex-row sm:items-end"
-        >
-          <h2 className="display max-w-xl text-[clamp(2rem,5vw,3.75rem)] font-semibold text-ink">
-            <motion.span variants={rise} className="block">
-              Honest pricing.
-            </motion.span>
-            <motion.span variants={rise} className="block text-ink-dim">
-              No surprises.
-            </motion.span>
-          </h2>
-          <motion.p variants={riseSoft} className="max-w-xs text-ink-dim">
-            Every site is fast, mobile-first, and easy for customers to use. Not
-            sure which fits? We'll help you choose — free.
-          </motion.p>
-        </motion.div>
+        <SectionHead
+          eyebrow="Pricing"
+          title="Honest pricing. No surprises."
+          sub="Every site is fast, mobile-first, and easy for customers to use. Not sure which fits? We'll help you choose — free."
+        />
 
         <motion.div
           variants={stagger(0, 0.1)}
           initial="hidden"
           whileInView="visible"
           viewport={inView}
-          className="border-b border-line"
+          className="mt-14 grid gap-5 lg:grid-cols-3"
         >
           {PLANS.map((p) => (
-            <PlanRow key={p.name} plan={p} />
+            <PlanCard key={p.name} plan={p} />
           ))}
         </motion.div>
 
         {showRelated && (
-          <p className="mt-10 text-[0.95rem] text-ink-dim">
+          <motion.p
+            variants={riseSoft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            className="mt-10 text-[0.9375rem] text-ink-dim"
+          >
             Explore:{" "}
             {RELATED.map((l, i) => (
               <span key={l.to}>
@@ -121,7 +101,7 @@ export default function Pricing({ showRelated = false }) {
                 {i < RELATED.length - 1 ? " · " : ""}
               </span>
             ))}
-          </p>
+          </motion.p>
         )}
       </div>
     </section>

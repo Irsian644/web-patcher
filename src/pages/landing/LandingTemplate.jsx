@@ -59,11 +59,11 @@ export default function LandingTemplate({
           initial="hidden"
           whileInView="visible"
           viewport={inView}
-          className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2"
+          className="mt-12 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2"
         >
           {points.map((p) => (
-            <motion.div key={p.title} variants={rise} className="bg-bg p-8 sm:p-10">
-              <h2 className="font-display text-xl font-semibold text-ink">{p.title}</h2>
+            <motion.div key={p.title} variants={rise} className="bg-surface p-8 sm:p-10">
+              <h2 className="font-display text-xl font-medium text-ink">{p.title}</h2>
               <p className="mt-3 text-[0.98rem] leading-relaxed text-ink-dim">{p.body}</p>
             </motion.div>
           ))}

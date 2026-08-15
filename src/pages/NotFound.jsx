@@ -13,7 +13,7 @@ export default function NotFound() {
       />
       <section className="wrap flex min-h-[70vh] flex-col items-start justify-center pt-28">
         <p className="label mb-6">Error 404</p>
-        <h1 className="display text-[clamp(2.5rem,7vw,5rem)] font-semibold text-ink">
+        <h1 className="display text-[clamp(2.5rem,7vw,5rem)] font-light text-ink">
           This page took<br />
           <span className="text-ink-dim">a wrong turn.</span>
         </h1>

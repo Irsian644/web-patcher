@@ -17,20 +17,40 @@
   font-style: normal;
   font-display: swap;
 }
+/* Display face. Self-hosted: the Fontshare <link> it replaces was a
+   render-blocking third-party stylesheet on the critical path. */
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ── Design tokens ────────────────────────────────────────── */
 :root {
   color-scheme: dark;
 
+  /* Near-black base (TheWebPatcher keeps its faint blue undertone rather
+     than the reference's pure #000). Surfaces sit just above the page. */
   --bg: oklch(0.16 0.015 264);
   --bg-2: oklch(0.205 0.022 264);
+  --surface: oklch(0.19 0.014 264);
+  --surface-2: oklch(0.235 0.016 264);
   --ink: oklch(0.97 0.005 264);
-  --ink-dim: oklch(0.74 0.012 264);
-  --ink-faint: oklch(0.55 0.013 264);
+  /* ~72% white equivalent: clears 4.5:1 on --surface. The reference runs
+     65%, which lands at ~4.4:1 — fidelity doesn't outrank contrast. */
+  --ink-dim: oklch(0.78 0.011 264);
+  --ink-faint: oklch(0.6 0.013 264);
   --line: oklch(1 0 0 / 0.09);
   --line-strong: oklch(1 0 0 / 0.16);
   --blue: oklch(0.62 0.21 258);
   --blue-soft: oklch(0.72 0.16 258);
+
+  /* Reference radii: generous, and the main reason it reads "premium". */
+  --radius-btn: 14px;
+  --radius-card: 28px;
+  --radius-panel: 44px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -80,26 +100,13 @@
     overflow-x: hidden;
   }
 
-  /* Film grain — kills the "flat digital gradient" look. Fixed overlay,
-     tiny inline SVG turbulence tile, imperceptible cost. */
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 160px 160px;
-  }
-
   ::selection {
     background: var(--blue);
     color: white;
   }
 
   h1, h2, h3 {
-    font-family: "Clash Display", system-ui, sans-serif;
+    font-family: "Satoshi", system-ui, sans-serif;
     text-wrap: balance;
   }
 
@@ -145,14 +152,14 @@
 @layer components {
   .wrap {
     width: 100%;
-    max-width: var(--max-w, 82rem);
+    /* ~1360px — matches the reference's measured content column. */
+    max-width: var(--max-w, 85rem);
     margin-inline: auto;
-    padding-inline: clamp(1.25rem, 5vw, 4rem);
+    padding-inline: clamp(1.25rem, 5vw, 5rem);
   }
 
-  /* Tiny mono label — used DELIBERATELY and sparingly (index markers
-     on the real sequence + a couple of structural captions), not as a
-     per-section eyebrow. */
+  /* Tiny mono label — retained for numerals/captions. Section eyebrows now
+     use the <Eyebrow> pill instead. */
   .label {
     font-family: "Geist Mono", monospace;
     font-size: 0.72rem;
@@ -161,12 +168,13 @@
     text-transform: uppercase;
   }
 
-  /* Display headline base */
+  /* Display headline base — the reference's defining move: very large,
+     LIGHT weight (400), line-height 1.0. Bold would break the illusion. */
   .display {
-    font-family: "Clash Display", system-ui, sans-serif;
-    font-weight: 600;
-    line-height: 0.95;
-    letter-spacing: -0.025em;
+    font-family: "Satoshi", system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
     text-wrap: balance;
   }
 
@@ -189,6 +197,27 @@
       oklch(0.62 0.21 258 / 0.4) 70%,
       transparent
     );
+  }
+
+  /* Reference card: raised surface, generous radius, hairline edge. */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+  }
+
+  /* Large-radius section container. */
+  .panel-r {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+  }
+
+  /* Media in the reference sits on a large radius with a hairline edge. */
+  .media {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid var(--line);
   }
 
   /* Tonal panel — alternates section surfaces for rhythm without cards */

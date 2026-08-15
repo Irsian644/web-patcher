@@ -1,6 +1,12 @@
 import Seo from "../seo/Seo";
 import { ROUTES } from "../seo/site";
-import { pageGraph, breadcrumbSchema } from "../seo/schema";
+import {
+  pageGraph,
+  breadcrumbSchema,
+  portfolioSchema,
+  reviewSchema,
+} from "../seo/schema";
+import { PROJECTS, TESTIMONIALS } from "../data/content";
 import Breadcrumbs from "../components/Breadcrumbs";
 import PageHeader from "../components/PageHeader";
 import Work from "../components/sections/Work";
@@ -17,7 +23,11 @@ export default function Portfolio() {
   const schema = pageGraph({
     route: r,
     hasBreadcrumb: true,
-    nodes: [breadcrumbSchema(trail)],
+    nodes: [
+      breadcrumbSchema(trail),
+      portfolioSchema(PROJECTS),
+      ...reviewSchema(TESTIMONIALS),
+    ],
   });
 
   return (

@@ -5,6 +5,7 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import PageHeader from "../components/PageHeader";
 import Pricing from "../components/sections/Pricing";
 import Process from "../components/sections/Process";
+import ServicesSection from "../components/sections/Services";
 import FAQ from "../components/sections/FAQ";
 import CTABand from "../components/CTABand";
 import { FAQS, CARE_INCLUDES, CARE_EXCLUDES } from "../data/content";
@@ -13,25 +14,6 @@ const r = ROUTES.services;
 const trail = [
   { name: "Home", path: "/" },
   { name: "Services", path: r.path },
-];
-
-const SERVICES = [
-  {
-    title: "Web Design",
-    body: "Clean, modern, mobile-first design that helps your business look professional and easy to trust. Every layout is planned around what your customers need to find.",
-  },
-  {
-    title: "Website Development",
-    body: "Fast, responsive websites built with modern code — not bloated page builders — so pages load quickly and the site is set up to be found in search.",
-  },
-  {
-    title: "E-Commerce Development",
-    body: "Online stores with a product catalogue and secure checkout, so customers across Albania and Europe can browse and order directly.",
-  },
-  {
-    title: "Redesigns & Care",
-    body: "Already have a site that looks dated? I can rebuild it and, if you'd like, keep it fast, secure, and up to date with optional monthly care from €20/month.",
-  },
 ];
 
 export default function Services() {
@@ -60,24 +42,17 @@ export default function Services() {
         intro="From your first professional website to a full online store — clear web design and development for businesses in Albania and across Europe, with honest pricing and realistic timelines."
       />
 
-      <section className="wrap pb-[clamp(4rem,9vw,7rem)]">
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
-          {SERVICES.map((s) => (
-            <div key={s.title} className="bg-bg p-8 sm:p-10">
-              <h2 className="font-display text-2xl font-semibold text-ink">{s.title}</h2>
-              <p className="mt-4 text-[1rem] leading-relaxed text-ink-dim">{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* The page's own H1 is in PageHeader, so the section renders its
+          cards without a duplicate heading block. */}
+      <ServicesSection showHead={false} />
 
       <Pricing />
 
       {/* Optional care — clear about what is and isn't included */}
       <section className="wrap py-[clamp(3rem,7vw,5rem)]">
-        <div className="grid gap-10 rounded-2xl border border-line bg-white/[0.02] p-8 sm:p-10 lg:grid-cols-12 lg:gap-16">
+        <div className="grid gap-10 rounded-card border border-line bg-surface p-8 sm:p-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <h2 className="font-display text-2xl font-semibold text-ink sm:text-[1.75rem]">
+            <h2 className="font-display text-2xl font-medium text-ink sm:text-[1.75rem]">
               Optional monthly care
             </h2>
             <p className="mt-4 text-[1rem] leading-relaxed text-ink-dim">

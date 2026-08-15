@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <!-- iOS ignores SVG here, so a real raster icon is required. -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <!-- Per-page <title>/meta/OG/Twitter/canonical/JSON-LD are injected per
          route by src/seo/Seo.jsx and prerendered into static HTML. The line
@@ -12,21 +13,15 @@
     <meta name="theme-color" content="#050816" />
     <meta name="format-detection" content="telephone=no" />
 
-    <!-- Resource hints: fonts + Instagram (where outbound links go) -->
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <!-- Resource hints: Instagram (where outbound links go). All fonts are
+         self-hosted, so no third-party font origins are needed. -->
     <link rel="dns-prefetch" href="https://ig.me" />
     <link rel="dns-prefetch" href="https://instagram.com" />
 
-    <!-- Clash Display (Fontshare) for cinematic headlines -->
-    <link
-      rel="stylesheet"
-      href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap"
-    />
-
-    <!-- Preload critical fonts + the LCP hero screenshot -->
+    <!-- Preload critical fonts. Satoshi renders the hero headline (LCP), so
+         it is preloaded alongside the body face. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/Satoshi-Variable.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/Geist-Variable.woff2" crossorigin />
-    <link rel="preload" as="image" href="/work/duo-nails.webp" fetchpriority="high" />
   </head>
   <body>
     <div id="root"></div>

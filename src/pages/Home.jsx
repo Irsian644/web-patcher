@@ -7,13 +7,15 @@ import {
   websiteSchema,
   localBusinessSchema,
   faqSchema,
+  reviewSchema,
 } from "../seo/schema";
 import { abs } from "../seo/site";
-import { FAQS } from "../data/content";
+import { FAQS, TESTIMONIALS } from "../data/content";
 
 import Hero from "../components/sections/Hero";
 import Trust from "../components/sections/Trust";
 import Work from "../components/sections/Work";
+import Services from "../components/sections/Services";
 import Testimonials from "../components/sections/Testimonials";
 import Process from "../components/sections/Process";
 import Pricing from "../components/sections/Pricing";
@@ -34,6 +36,7 @@ export default function Home() {
       primaryImage: abs(r.ogImage),
     }),
     faqSchema(FAQS),
+    ...reviewSchema(TESTIMONIALS),
   ]);
 
   return (
@@ -45,11 +48,14 @@ export default function Home() {
         image={r.ogImage}
         schema={schema}
       />
+      {/* Section order mirrors the reference: work leads, then the studio
+          story, process, services, proof, pricing, answers, close. */}
       <Hero />
-      <Trust />
       <Work />
-      <Testimonials />
+      <Trust />
       <Process />
+      <Services />
+      <Testimonials />
       <Pricing showRelated />
       <FAQ />
       <FinalCTA />

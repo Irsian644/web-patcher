@@ -20,12 +20,11 @@ ${urls}
 </urlset>
 `;
 
+// /assets/ must stay crawlable: it holds the CSS and JS Google needs to
+// render the page. Blocking it degrades how the site is indexed.
 const robots = `# robots.txt — TheWebPatcher
 User-agent: *
 Allow: /
-
-# Block crawl of build/asset internals (not needed in index)
-Disallow: /assets/
 
 Sitemap: ${SITE_URL}/sitemap.xml
 `;

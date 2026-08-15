@@ -4,18 +4,21 @@ This site is a **prerendered multi-page React app** (vite-react-ssg). Every rout
 ships as real static HTML — Google sees full content, meta, and JSON-LD without
 running JavaScript.
 
-## ⚠️ One thing to do before launch
+## ⚠️ One thing to do when a custom domain goes live
 
-Set your real domain in **one place**: [`src/seo/site.js`](src/seo/site.js) →
-`SITE_URL`. It currently reads `https://thewebpatcher.com`. Every canonical,
-the sitemap, robots.txt, OG tags, and all JSON-LD derive from it. Change that
-line, rebuild, done.
+The domain lives in **one place**: [`src/seo/site.js`](src/seo/site.js) →
+`SITE_URL`. It currently reads `https://web-patcher.vercel.app` (the live
+Vercel domain). Every canonical, the sitemap, robots.txt, OG tags, and all
+JSON-LD derive from it. Change that line, rebuild, done.
 
 ## Pages & target keywords
 
+The exact term "web design albania" is owned by `/web-design-albania`; the
+homepage targets brand + broad service intent so the two don't compete.
+
 | Route | Primary keyword |
 |---|---|
-| `/` | web design albania |
+| `/` | professional website design for small business |
 | `/services` | website development services |
 | `/portfolio` | web design portfolio albania |
 | `/about` | web developer albania |

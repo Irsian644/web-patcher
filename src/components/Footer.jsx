@@ -31,7 +31,7 @@ export default function Footer() {
       <div className="wrap py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="max-w-xs">
-            <Link to="/" aria-label="TheWebPatcher home">
+            <Link to="/" aria-label="TheWebPatcher home" className="inline-flex min-h-[44px] items-center">
               <Logo />
             </Link>
             <p className="mt-5 text-[0.95rem] leading-relaxed text-ink-dim">
@@ -46,7 +46,7 @@ export default function Footer() {
               <Link
                 key={l.to}
                 to={l.to}
-                className="text-[0.95rem] text-ink-dim transition-colors hover:text-ink"
+                className="inline-flex min-h-[44px] items-center text-[0.95rem] text-ink-dim transition-colors hover:text-ink"
               >
                 {l.label}
               </Link>
@@ -59,7 +59,7 @@ export default function Footer() {
               <Link
                 key={l.to}
                 to={l.to}
-                className="text-[0.95rem] text-ink-dim transition-colors hover:text-ink"
+                className="inline-flex min-h-[44px] items-center text-[0.95rem] text-ink-dim transition-colors hover:text-ink"
               >
                 {l.label}
               </Link>
@@ -72,7 +72,7 @@ export default function Footer() {
               href={BRAND.instagramUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 text-[0.95rem] text-ink-dim transition-colors hover:text-ink"
+              className="inline-flex min-h-[44px] items-center gap-2 text-[0.95rem] text-ink-dim transition-colors hover:text-ink"
             >
               <InstagramGlyph />
               {BRAND.handle}
@@ -81,7 +81,7 @@ export default function Footer() {
               href={BRAND.dmUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-[0.95rem] text-blue-soft transition-colors hover:text-ink"
+              className="inline-flex min-h-[44px] items-center text-[0.95rem] text-blue-soft transition-colors hover:text-ink"
             >
               Send a DM
             </a>

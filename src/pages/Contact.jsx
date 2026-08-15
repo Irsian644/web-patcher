@@ -41,8 +41,8 @@ export default function Contact() {
       <section className="wrap pb-[clamp(5rem,11vw,8rem)]">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Start the conversation */}
-          <div className="rounded-2xl border border-line p-8 sm:p-10">
-            <h2 className="font-display text-2xl font-semibold text-ink">
+          <div className="rounded-card border border-line p-8 sm:p-10">
+            <h2 className="font-display text-2xl font-medium text-ink">
               Message me on Instagram
             </h2>
             <p className="mt-4 text-[1rem] leading-relaxed text-ink-dim">
@@ -66,8 +66,8 @@ export default function Contact() {
 
           {/* Quick-start by package + details */}
           <div className="flex flex-col gap-8">
-            <div className="rounded-2xl border border-line p-8 sm:p-10">
-              <h2 className="font-display text-2xl font-semibold text-ink">
+            <div className="rounded-card border border-line p-8 sm:p-10">
+              <h2 className="font-display text-2xl font-medium text-ink">
                 Know what you need?
               </h2>
               <p className="mt-3 text-[0.95rem] text-ink-dim">
@@ -97,8 +97,8 @@ export default function Contact() {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-line p-8 sm:p-10">
-              <h2 className="font-display text-2xl font-semibold text-ink">Details</h2>
+            <div className="rounded-card border border-line p-8 sm:p-10">
+              <h2 className="font-display text-2xl font-medium text-ink">Details</h2>
               <dl className="mt-6 flex flex-col gap-5 text-[1rem]">
                 <div>
                   <dt className="label mb-1">Instagram</dt>

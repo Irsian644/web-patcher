@@ -24,7 +24,7 @@ export default function ScreenFrame({
       )}
 
       <div
-        className="overflow-hidden rounded-[14px] border border-white/12 bg-[#0a0e1a]"
+        className="overflow-hidden rounded-card border border-white/12 bg-[#0a0e1a]"
         style={{
           boxShadow: glow
             ? "var(--shadow-frame), var(--glow-frame)"

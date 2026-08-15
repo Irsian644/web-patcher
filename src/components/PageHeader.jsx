@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Eyebrow from "./ui/Eyebrow";
 import { rise, riseSoft, stagger } from "../lib/motion";
 
 /** H1 + intro for inner/landing pages. The page's single <h1>. */
@@ -7,13 +8,13 @@ export default function PageHeader({ kicker, title, intro }) {
     <header className="wrap pb-[clamp(3rem,7vw,5rem)] pt-12">
       <motion.div variants={stagger(0, 0.08)} initial="hidden" animate="visible">
         {kicker && (
-          <motion.p variants={riseSoft} className="label mb-6">
-            {kicker}
-          </motion.p>
+          <motion.div variants={riseSoft} className="mb-7">
+            <Eyebrow>{kicker}</Eyebrow>
+          </motion.div>
         )}
         <motion.h1
           variants={rise}
-          className="display max-w-4xl text-[clamp(2.4rem,6vw,4.75rem)] font-semibold text-ink"
+          className="display max-w-4xl text-[clamp(2.4rem,6vw,4.75rem)] font-light text-ink"
         >
           {title}
         </motion.h1>

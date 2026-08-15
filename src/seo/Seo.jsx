@@ -73,7 +73,8 @@ export default function Seo({
       <meta property="og:locale" content="en_US" />
       <meta property="og:locale:alternate" content="sq_AL" />
 
-      {/* Twitter */}
+      {/* Twitter. No @handle exists for the business (Instagram-only), so
+          twitter:site/creator are deliberately omitted rather than guessed. */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />

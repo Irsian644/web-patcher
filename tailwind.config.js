@@ -4,19 +4,29 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Clash Display"', "system-ui", "sans-serif"],
+        display: ["Satoshi", "system-ui", "sans-serif"],
         sans: ["Geist", "system-ui", "sans-serif"],
         mono: ['"Geist Mono"', "ui-monospace", "monospace"],
       },
       colors: {
         bg: "var(--bg)",
         "bg-2": "var(--bg-2)",
+        surface: "var(--surface)",
+        "surface-2": "var(--surface-2)",
         ink: "var(--ink)",
         "ink-dim": "var(--ink-dim)",
         "ink-faint": "var(--ink-faint)",
         line: "var(--line)",
+        // Was missing: border-line-strong / bg-line-strong are used in
+        // several components and silently resolved to nothing without this.
+        "line-strong": "var(--line-strong)",
         blue: "var(--blue)",
         "blue-soft": "var(--blue-soft)",
+      },
+      borderRadius: {
+        btn: "var(--radius-btn)",
+        card: "var(--radius-card)",
+        panel: "var(--radius-panel)",
       },
       maxWidth: {
         editorial: "78rem",

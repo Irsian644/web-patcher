@@ -79,6 +79,38 @@ export const TESTIMONIALS = [
   },
 ];
 
+// Services actually offered. Lifted out of pages/Services.jsx so the home
+// page and the services page render the same source.
+export const SERVICES = [
+  {
+    title: "Web Design",
+    body: "Clean, modern, mobile-first design that helps your business look professional and easy to trust. Every layout is planned around what your customers need to find.",
+  },
+  {
+    title: "Website Development",
+    body: "Fast, responsive websites built with modern code — not bloated page builders — so pages load quickly and the site is set up to be found in search.",
+  },
+  {
+    title: "E-Commerce Development",
+    body: "Online stores with a product catalogue and secure checkout, so customers across Albania and Europe can browse and order directly.",
+  },
+  {
+    title: "Redesigns & Care",
+    body: "Already have a site that looks dated? I can rebuild it and, if you'd like, keep it fast, secure, and up to date with optional monthly care from €20/month.",
+  },
+];
+
+// Capability chips shown under the services intro.
+export const SERVICE_TAGS = [
+  "Business websites",
+  "Web design",
+  "Web development",
+  "E-commerce",
+  "Website redesign",
+  "Responsive design",
+  "Ongoing support",
+];
+
 export const PROCESS = [
   {
     n: "01",

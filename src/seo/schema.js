@@ -187,6 +187,49 @@ export function serviceSchema({ name, description, serviceType, url }) {
   };
 }
 
+/**
+ * The real portfolio as an ItemList of CreativeWork nodes. Each entry points
+ * at the live site and its screenshot — all verifiable from the page itself.
+ */
+export function portfolioSchema(projects) {
+  return {
+    "@type": "ItemList",
+    "@id": `${abs("/portfolio")}#worklist`,
+    name: "Websites designed and developed by TheWebPatcher",
+    numberOfItems: projects.length,
+    itemListElement: projects.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "WebSite",
+        name: p.title,
+        url: p.url,
+        description: p.blurb,
+        image: abs(p.image),
+        dateCreated: p.year,
+        creator: { "@id": LOCALBUSINESS_ID },
+      },
+    })),
+  };
+}
+
+/**
+ * Real client messages as Review nodes.
+ *
+ * Deliberately NO reviewRating and NO aggregateRating: these are informal
+ * Instagram messages, not scored reviews. Inventing a rating value to earn
+ * stars would be fabricated data.
+ */
+export function reviewSchema(testimonials) {
+  return testimonials.map((t) => ({
+    "@type": "Review",
+    itemReviewed: { "@id": LOCALBUSINESS_ID },
+    reviewBody: t.quote,
+    inLanguage: "sq",
+    author: { "@type": "Organization", name: t.business },
+  }));
+}
+
 export function faqSchema(faqs) {
   return {
     "@type": "FAQPage",

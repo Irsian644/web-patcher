@@ -1,67 +1,83 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { rise, riseSoft, stagger, inView } from "../../lib/motion";
+import { motion } from "framer-motion";
+import SectionHead from "../ui/SectionHead";
+import { rise, stagger, inView } from "../../lib/motion";
 import { FAQS } from "../../data/content";
 
+/**
+ * Accordion row.
+ *
+ * The answer is ALWAYS rendered in the DOM and collapsed with a CSS grid
+ * row-size transition (1fr → 0fr). The previous implementation unmounted
+ * closed answers, so only the first answer survived into the prerendered
+ * HTML — the rest were invisible to crawlers. Every Q&A now ships in the
+ * static markup while the open/close animation is preserved.
+ */
 function Row({ item, open, onToggle, i }) {
   return (
-    <motion.div variants={rise} className="border-t border-line last:border-b">
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={open}
-        aria-controls={`faq-${i}`}
-        className="flex w-full items-center justify-between gap-6 py-7 text-left"
+    <motion.div variants={rise} className="card overflow-hidden">
+      <h3>
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-expanded={open}
+          aria-controls={`faq-panel-${i}`}
+          id={`faq-btn-${i}`}
+          className="flex w-full items-center justify-between gap-6 p-6 text-left sm:p-7"
+        >
+          <span className="font-display text-[1.0625rem] font-medium text-ink sm:text-[1.1875rem]">
+            {item.q}
+          </span>
+          <span aria-hidden className="relative h-5 w-5 shrink-0">
+            <span className="absolute left-0 top-1/2 h-px w-5 bg-ink-dim" />
+            <span
+              className={`absolute left-1/2 top-0 h-5 w-px bg-ink-dim transition-transform duration-300 ease-out-expo ${
+                open ? "scale-y-0" : "scale-y-100"
+              }`}
+            />
+          </span>
+        </button>
+      </h3>
+
+      <div
+        id={`faq-panel-${i}`}
+        role="region"
+        aria-labelledby={`faq-btn-${i}`}
+        className="grid transition-[grid-template-rows] duration-[400ms] ease-out-expo"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
       >
-        <span className="font-display text-lg font-medium text-ink sm:text-xl">
-          {item.q}
-        </span>
-        <span className="relative h-5 w-5 shrink-0">
-          <span className="absolute left-0 top-1/2 h-px w-5 bg-ink-dim" />
-          <span
-            className={`absolute left-1/2 top-0 h-5 w-px bg-ink-dim transition-transform duration-300 ease-out-expo ${
-              open ? "scale-y-0" : "scale-y-100"
-            }`}
-          />
-        </span>
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            id={`faq-${i}`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <p className="max-w-2xl pb-7 text-[1rem] leading-relaxed text-ink-dim">
-              {item.a}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        <div className="overflow-hidden">
+          <p className="px-6 pb-6 text-[0.9875rem] leading-relaxed text-ink-dim sm:px-7 sm:pb-7">
+            {item.a}
+          </p>
+        </div>
+      </div>
     </motion.div>
   );
 }
 
 export default function FAQ({ items = FAQS }) {
   const [open, setOpen] = useState(0);
+
   return (
     <section id="faq" className="relative py-[clamp(5rem,12vw,9rem)]">
-      <div className="wrap grid gap-y-10 lg:grid-cols-12 lg:gap-x-16">
-        <div className="lg:col-span-4">
-          <h2 className="display sticky top-28 text-[clamp(2rem,5vw,3.25rem)] font-semibold text-ink">
-            Questions,<br />
-            <span className="text-ink-dim">answered.</span>
-          </h2>
+      <div className="wrap grid gap-y-12 lg:grid-cols-12 lg:gap-x-16">
+        <div className="lg:col-span-5">
+          <div className="lg:sticky lg:top-28">
+            <SectionHead
+              eyebrow="Answers"
+              title="Questions, answered."
+              sub="The things businesses ask most before starting a website — pricing, timelines, and what happens after launch."
+            />
+          </div>
         </div>
+
         <motion.div
           variants={stagger(0, 0.06)}
           initial="hidden"
           whileInView="visible"
           viewport={inView}
-          className="lg:col-span-7 lg:col-start-6"
+          className="flex flex-col gap-3.5 lg:col-span-7"
         >
           {items.map((item, i) => (
             <Row

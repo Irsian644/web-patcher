@@ -21,7 +21,7 @@ function InstagramBefore() {
           ))}
         </div>
         <div className="absolute inset-x-3 bottom-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-center">
-          <span className="text-[0.6rem] font-medium uppercase tracking-wider text-white/30">
+          <span className="text-[0.6rem] font-medium uppercase tracking-wider text-white/70">
             No prices · No info · No link
           </span>
         </div>
